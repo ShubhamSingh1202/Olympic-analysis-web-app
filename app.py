@@ -6,8 +6,18 @@ import preprocessor,helper
 import seaborn as sns
 import plotly.figure_factory as ff
 
-df = pd.read_csv('athlete_events.csv')
-region_df = pd.read_csv("noc_regions.csv")
+import os
+import pandas as pd
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+df_path = os.path.join(BASE_DIR, "athlete_events.csv")
+region_path = os.path.join(BASE_DIR, "noc_regions.csv")
+
+df = pd.read_csv(df_path)
+region_df = pd.read_csv(region_path)
+# df = pd.read_csv('athlete_events.csv')
+# region_df = pd.read_csv("noc_regions.csv")
 
 df = preprocessor.preprocess(df, region_df)
 st.sidebar.title("Olympic Analysis")
